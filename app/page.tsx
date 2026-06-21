@@ -599,7 +599,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="#problem"
+                  href="#overview"
                   className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-3.5 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/10"
                 >
                   Watch 60-second Overview
@@ -627,6 +627,27 @@ export default function Home() {
 
             <div className="reveal" style={{ transitionDelay: "120ms" }}>
               <HeroKnowledgeGraph />
+            </div>
+          </div>
+        </section>
+
+        {/* Overview video */}
+        <section
+          id="overview"
+          className="mx-auto max-w-7xl px-6 pb-32 lg:px-8"
+          aria-label="Surgical overview video"
+        >
+          <div className="reveal mx-auto max-w-4xl">
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 shadow-2xl backdrop-blur-xl">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="aspect-video h-auto w-full object-cover"
+                src="/videos/nucleus-chopping.mp4"
+              />
             </div>
           </div>
         </section>
@@ -1272,22 +1293,285 @@ export default function Home() {
                 About
               </p>
               <blockquote className="mt-8 text-3xl font-bold leading-snug tracking-tight sm:text-4xl lg:text-5xl">
-                &ldquo;The operating system for{" "}
+                &ldquo;The knowledge layer for{" "}
                 <span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-                  machine-understandable surgical knowledge
+                  machine-understandable surgery
                 </span>
                 .&rdquo;
               </blockquote>
               <p className="mt-10 text-lg leading-relaxed text-slate-400">
-                SurgicalDataOS was founded on a simple conviction: the next
+                SurgicalDataOS is founded on a simple conviction: the next
                 generation of surgical AI will not emerge from larger models
-                trained on more pixels. It will emerge from a shared
-                representation of what surgery{" "}
-                <em className="text-slate-300 not-italic">means</em> — encoded
-                rigorously, annotated collaboratively, and made accessible to
-                every researcher, clinician, and robotic system building the
-                future of ophthalmic care.
+                trained on more pixels. It will emerge from structured
+                representations of surgical expertise that preserve observation,
+                reasoning, decision-making and action in a machine-understandable
+                form.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 10. FROM SURGICAL VIDEO TO MACHINE KNOWLEDGE */}
+        <section id="machine-knowledge" className="py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="reveal mx-auto max-w-3xl text-center">
+              <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
+                From Surgical Video to Machine Knowledge
+              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                From Surgical Video to Machine Knowledge
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-slate-400">
+                Every surgical procedure is represented as a sequence of Machine
+                Knowledge Objects (MKOs)—structured computational
+                representations that preserve what the surgeon observed,
+                interpreted, decided and performed. Together these MKOs form a
+                machine-readable Knowledge Graph capable of supporting
+                explainable AI, surgical robotics, simulation, education and
+                collaborative research.
+              </p>
+            </div>
+
+            <div className="reveal mt-20 grid gap-6 lg:grid-cols-3">
+              {[
+                {
+                  id: "MKO-0001",
+                  phase: "Nucleus Fragmentation",
+                  observation: "Stable phaco fixation established.",
+                  interpretation:
+                    "The nucleus is securely stabilised, permitting controlled transmission of chopping forces.",
+                  decision: "Advance the chopper towards the equator.",
+                  action: "Controlled chopper advancement.",
+                },
+                {
+                  id: "MKO-0002",
+                  phase: "Primary Nuclear Fracture",
+                  observation:
+                    "Opposing instrument forces create a central crack.",
+                  interpretation:
+                    "Mechanical stress exceeds nuclear cohesion.",
+                  decision:
+                    "Complete the fracture while maintaining chamber stability.",
+                  action: "Vertical chop executed.",
+                },
+                {
+                  id: "MKO-0003",
+                  phase: "Quadrant Removal",
+                  observation: "Fragment engaged under stable occlusion.",
+                  interpretation:
+                    "Continuous aspiration allows controlled centralisation.",
+                  decision:
+                    "Maintain occlusion while repositioning the fragment.",
+                  action: "Fragment centralised and emulsified.",
+                },
+              ].map((mko) => (
+                <div
+                  key={mko.id}
+                  className="flex flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-8 backdrop-blur-xl transition hover:border-cyan-500/20"
+                >
+                  <p className="font-mono text-[10px] tracking-widest text-cyan-400/60 uppercase">
+                    {mko.id}
+                  </p>
+                  <p className="mt-4 text-xs font-medium tracking-widest text-slate-500 uppercase">
+                    Phase
+                  </p>
+                  <h3 className="mt-1 text-lg font-semibold text-white">
+                    {mko.phase}
+                  </h3>
+                  <div className="mt-6 flex-1 space-y-5">
+                    {(
+                      [
+                        ["Observation", mko.observation],
+                        ["Interpretation", mko.interpretation],
+                        ["Decision", mko.decision],
+                        ["Action", mko.action],
+                      ] as const
+                    ).map(([label, value]) => (
+                      <div key={label}>
+                        <p className="text-xs font-medium tracking-widest text-slate-500 uppercase">
+                          {label}
+                        </p>
+                        <p className="mt-1.5 text-sm leading-relaxed text-slate-300">
+                          {value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 11. BEYOND ANNOTATION */}
+        <section
+          id="beyond-annotation"
+          className="border-t border-white/5 bg-white/[0.01] py-32"
+        >
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="reveal mx-auto max-w-2xl text-center">
+              <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
+                Beyond Annotation
+              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                Beyond Annotation
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-slate-400">
+                Current datasets describe pixels.
+                <br />
+                SurgicalDataOS represents surgical intelligence.
+              </p>
+            </div>
+
+            <div className="reveal mt-20 grid gap-6 lg:grid-cols-2">
+              <div className="rounded-2xl border border-white/5 bg-slate-900/40 p-8 backdrop-blur-sm">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="h-px flex-1 bg-slate-700" />
+                  <span className="font-mono text-xs tracking-wider text-slate-500 uppercase">
+                    Traditional Annotation
+                  </span>
+                  <div className="h-px flex-1 bg-slate-700" />
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "Labels pixels",
+                    "Detects instruments",
+                    "Segments anatomy",
+                    "Describes events",
+                    "Stores video metadata",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-sm text-slate-500"
+                    >
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-slate-600" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.03] p-8 backdrop-blur-sm">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="h-px flex-1 bg-cyan-500/20" />
+                  <span className="font-mono text-xs tracking-wider text-cyan-400 uppercase">
+                    SurgicalDataOS
+                  </span>
+                  <div className="h-px flex-1 bg-cyan-500/20" />
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "Creates Machine Knowledge Objects",
+                    "Captures surgical reasoning",
+                    "Represents operative intent",
+                    "Builds Knowledge Graphs",
+                    "Enables robotic decision making",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-sm text-slate-300"
+                    >
+                      <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-cyan-500/10">
+                        <svg
+                          className="h-2.5 w-2.5 text-cyan-400"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={3}
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4.5 12.75l6 6 9-13.5"
+                          />
+                        </svg>
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 12. RESEARCH INITIATIVE */}
+        <section id="research-initiative" className="py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="reveal mx-auto max-w-2xl">
+              <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
+                Research Initiative
+              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                Research Initiative
+              </h2>
+              <div className="mt-8 space-y-6 text-lg leading-relaxed text-slate-400">
+                <p>
+                  SurgicalDataOS is an independent research initiative led by
+                  Dr. Merine Paul, an ophthalmic surgeon with more than
+                  twenty-five years of experience in cataract surgery and
+                  surgical education.
+                </p>
+                <p>
+                  The project emerged from a simple observation: surgical
+                  videos contain substantially more knowledge than today&apos;s
+                  AI systems are able to learn.
+                </p>
+                <p>
+                  Its objective is to create a structured knowledge
+                  representation for surgery that enables explainable AI,
+                  surgical robotics, simulation, education and collaborative
+                  research.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 13. COLLABORATION */}
+        <section
+          id="collaboration"
+          className="border-t border-white/5 bg-white/[0.01] py-32"
+        >
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="reveal mx-auto max-w-2xl text-center">
+              <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
+                Collaboration
+              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                Building Surgical Intelligence Together
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-slate-400">
+                SurgicalDataOS is an open research initiative that welcomes
+                collaboration with surgeons, AI researchers, robotics companies,
+                academic laboratories and industry partners interested in
+                advancing machine-understandable surgical intelligence. We
+                believe the future of surgical AI will be built through open
+                scientific collaboration, shared knowledge representations and
+                rigorous validation.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="mailto:hello@surgicaldataos.com"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-8 py-3.5 text-sm font-semibold text-slate-950 transition hover:brightness-110"
+                >
+                  Get in Touch
+                </a>
+                <a
+                  href="https://github.com/Merinepaul/surgical-dataos-clean"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/10"
+                >
+                  View GitHub
+                </a>
+                <a
+                  href="#"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/10"
+                >
+                  Read White Paper
+                </a>
+              </div>
             </div>
           </div>
         </section>
