@@ -1,0 +1,179 @@
+{
+  "id": "SDOS-REF-001",
+  "title": "Nucleus Fragmentation",
+  "procedure": "Phacoemulsification",
+  "technique": "Vertical Chop",
+  "fps": 60,
+  "duration": 13.7,
+  "video": "/videos/SDOS-REF-001.mp4",
+  "knowledgeObjects": [
+    {
+      "id": "SDOS-KO-0001",
+      "title": "Phaco Fixation Established",
+      "metadata": {
+        "startFrame": 0,
+        "endFrame": 82,
+        "representativeFrame": 40,
+        "startTime": "0.00",
+        "endTime": "1.37",
+        "phase": "Nucleus Management",
+        "stage": "Fragmentation",
+        "thumbnail": null
+      },
+      "state": {
+        "observation": "The phaco tip is embedded within the nucleus, providing stable fixation. The nucleus remains intact, and the chopper has not yet initiated the chopping manoeuvre.",
+        "interpretation": "Stable fixation has been achieved, creating the mechanical conditions required for controlled advancement of the chopper toward the equator.",
+        "decision": "Maintain secure nuclear fixation while preparing to position the second instrument for nucleus fragmentation.",
+        "action": "The phaco tip maintains stable purchase on the nucleus while fixation is preserved.",
+        "event": "A stable mechanical relationship is established between the nucleus and the phaco tip, preparing the nucleus for controlled fragmentation.",
+        "outcome": "The nucleus is securely stabilised, allowing safe progression to the chopping phase.",
+        "cognitiveIntent": "Create a stable mechanical foundation from which a controlled and reproducible nuclear fracture can be initiated.",
+        "knowledgeExtract": "Successful vertical chop begins with secure nuclear fixation. Stable fixation is the prerequisite that enables controlled force transmission during the subsequent chopping manoeuvre."
+      }
+    },
+    {
+      "id": "SDOS-KO-0002",
+      "title": "Chopper Advancement",
+      "metadata": {
+        "startFrame": 83,
+        "endFrame": 174,
+        "representativeFrame": 129,
+        "startTime": "1.38",
+        "endTime": "2.90",
+        "phase": "Nucleus Management",
+        "stage": "Fragmentation",
+        "thumbnail": null
+      },
+      "state": {
+        "observation": "The phaco tip maintains stable fixation of the nucleus while the chopper advances through the epinuclear plane toward the equatorial edge of the nucleus. No compressive force has yet been applied.",
+        "interpretation": "The second instrument is being positioned to establish the optimal mechanical geometry required for an effective vertical chop while preserving stable nuclear fixation.",
+        "decision": "Advance the chopper to the intended equatorial position before initiating the chopping manoeuvre.",
+        "action": "The chopper is advanced peripherally beneath the anterior nuclear surface while continuous fixation is maintained by the phaco tip.",
+        "event": "The chopper reaches the target position adjacent to the nuclear equator without disturbing nuclear stability.",
+        "outcome": "Both instruments are correctly positioned to generate a controlled fracture during the subsequent chopping manoeuvre.",
+        "cognitiveIntent": "Establish the spatial relationship between the two instruments that enables efficient transmission of opposing forces during nucleus fragmentation.",
+        "knowledgeExtract": "Successful vertical chop depends on accurate equatorial positioning of the chopper before force application. Instrument positioning is a distinct cognitive state that determines the efficiency, direction and reproducibility of the subsequent nuclear fracture."
+      }
+    },
+    {
+      "id": "SDOS-KO-0003",
+      "title": "Primary Nuclear Fracture",
+      "metadata": {
+        "startFrame": 175,
+        "endFrame": 286,
+        "representativeFrame": 230,
+        "startTime": "2.92",
+        "endTime": "4.77",
+        "phase": "Nucleus Management",
+        "stage": "Fragmentation",
+        "thumbnail": null
+      },
+      "state": {
+        "observation": "The chopper reaches the equatorial position and moves centripetally toward the phaco tip while stable fixation is maintained. Opposing forces are generated between the two instruments, producing the initial full-thickness nuclear crack.",
+        "interpretation": "Controlled application of opposing mechanical forces initiates a directed fracture through the nucleus along the intended cleavage plane.",
+        "decision": "Apply sufficient compressive force to create a controlled primary fracture while maintaining stable fixation and chamber stability.",
+        "action": "The chopper is drawn centrally toward the fixed phaco tip, generating the compressive forces required to split the nucleus.",
+        "event": "A visible primary nuclear fracture develops and propagates through the nucleus.",
+        "outcome": "The nucleus is successfully divided along the intended fracture plane, creating the foundation for complete fragmentation.",
+        "cognitiveIntent": "Convert stable fixation into controlled nuclear cleavage by generating a reproducible fracture with precisely directed mechanical forces.",
+        "knowledgeExtract": "Vertical chop depends on controlled force transmission rather than instrument motion alone. Successful fragmentation results from coordinated fixation, equatorial positioning and directed compression to produce a predictable fracture plane."
+      }
+    },
+    {
+      "id": "SDOS-KO-0004",
+      "title": "Primary Fragment Separation",
+      "metadata": {
+        "startFrame": 287,
+        "endFrame": 392,
+        "representativeFrame": 340,
+        "startTime": "4.78",
+        "endTime": "6.53",
+        "phase": "Nucleus Management",
+        "stage": "Fragmentation",
+        "thumbnail": null
+      },
+      "state": {
+        "observation": "Following completion of the primary fracture, the instruments separate the two nuclear halves, producing a visible cleavage plane and increasing the spatial distance between the fragments.",
+        "interpretation": "The initial fracture is converted into complete mechanical separation, creating independently manipulable nuclear fragments for subsequent fragmentation.",
+        "decision": "Complete separation of the fractured nuclear halves before initiating the next chopping cycle.",
+        "action": "The instruments gently disengage the opposing nuclear fragments while maintaining chamber stability and preserving control of the nucleus.",
+        "event": "The primary nuclear fragments separate completely, exposing a stable cleavage plane.",
+        "outcome": "Two distinct nuclear fragments are created, allowing controlled repositioning for further fragmentation.",
+        "cognitiveIntent": "Transform the initial fracture into stable fragment separation so that subsequent chopping manoeuvres can be performed safely and efficiently.",
+        "knowledgeExtract": "A successful chop is confirmed not merely by formation of a crack but by complete mechanical separation of the nuclear fragments. Stable fragment separation provides the geometric conditions required for the next fragmentation cycle."
+      }
+    },
+    {
+      "id": "SDOS-KO-0005",
+      "title": "Fragment Stabilization, Instrument Repositioning and Nuclear Rotation",
+      "metadata": {
+        "startFrame": 393,
+        "endFrame": 529,
+        "representativeFrame": 461,
+        "startTime": "6.55",
+        "endTime": "8.82",
+        "phase": "Nucleus Management",
+        "stage": "Fragmentation",
+        "thumbnail": null
+      },
+      "state": {
+        "observation": "Following separation of the primary fragments, the nucleus is stabilised while the instruments are repositioned. Controlled nuclear rotation aligns the remaining nuclear material for the subsequent chopping manoeuvre.",
+        "interpretation": "Although multiple physical movements occur, they collectively serve a single operative objective: establishing the optimal spatial geometry for the next fragmentation cycle.",
+        "decision": "Maintain fragment stability while repositioning both the nucleus and instruments to achieve the ideal orientation for the second chop.",
+        "action": "The surgeon stabilises the nuclear fragment, repositions the instruments and rotates the nucleus in a coordinated sequence without compromising chamber stability.",
+        "event": "The remaining nuclear material is brought into the optimal orientation for the next vertical chop.",
+        "outcome": "A stable mechanical configuration is established for initiation of the second fragmentation cycle.",
+        "cognitiveIntent": "Restore the geometric relationship between the nucleus and instruments required to repeat an efficient and controlled chopping manoeuvre.",
+        "knowledgeExtract": "Knowledge Objects are defined by operative intent rather than individual instrument movements. Stabilisation, repositioning and rotation together constitute a single cognitive state because they collectively prepare the surgical system for the next chop."
+      }
+    },
+    {
+      "id": "SDOS-KO-0006",
+      "title": "Secondary Chop Initiation",
+      "metadata": {
+        "startFrame": 530,
+        "endFrame": 684,
+        "representativeFrame": 607,
+        "startTime": "8.83",
+        "endTime": "11.40",
+        "phase": "Nucleus Management",
+        "stage": "Fragmentation",
+        "thumbnail": null
+      },
+      "state": {
+        "observation": "With the nucleus correctly reoriented, the phaco tip re-establishes stable fixation while the chopper advances toward the equator and begins the second chopping manoeuvre.",
+        "interpretation": "The surgical system has returned to an optimal mechanical configuration, allowing the fragmentation sequence to be repeated under controlled conditions.",
+        "decision": "Re-establish secure fixation and initiate a second controlled vertical chop to further divide the remaining nuclear material.",
+        "action": "The phaco tip stabilises the nucleus while the chopper advances and applies directed centripetal force to initiate the second fracture.",
+        "event": "A new fracture is initiated within the remaining nuclear material, marking the beginning of the second fragmentation cycle.",
+        "outcome": "The remaining nucleus undergoes further controlled division while chamber stability and instrument control are maintained.",
+        "cognitiveIntent": "Repeat the established fragmentation strategy to progressively reduce the nucleus into manageable fragments without compromising stability.",
+        "knowledgeExtract": "Efficient nucleus fragmentation is achieved through repetition of a reproducible cognitive workflow comprising fixation, geometric positioning and controlled force application. Each fragmentation cycle follows the same underlying surgical logic despite acting on progressively smaller tissue volumes."
+      }
+    },
+    {
+      "id": "SDOS-KO-0007",
+      "title": "Completion of Fragmentation",
+      "metadata": {
+        "startFrame": 685,
+        "endFrame": 822,
+        "representativeFrame": 754,
+        "startTime": "11.42",
+        "endTime": "13.70",
+        "phase": "Nucleus Management",
+        "stage": "Fragmentation",
+        "thumbnail": null
+      },
+      "state": {
+        "observation": "The second fracture propagates completely, resulting in full separation of the remaining nuclear segments. Multiple discrete fragments are now present within the capsular bag, ready for sequential removal.",
+        "interpretation": "The fragmentation objective has been successfully achieved. The nucleus has been transformed from a single cohesive structure into independently manageable fragments suitable for controlled emulsification.",
+        "decision": "Terminate the fragmentation phase and transition to the fragment removal workflow.",
+        "action": "The surgeon confirms complete separation of the nuclear fragments while maintaining anterior chamber stability and preparing for the first fragment capture.",
+        "event": "Nuclear fragmentation is completed and the procedure transitions from tissue division to fragment extraction.",
+        "outcome": "Multiple stable nuclear fragments are available for sequential emulsification and aspiration.",
+        "cognitiveIntent": "Complete the fragmentation strategy while preserving chamber stability and creating fragment geometry that facilitates efficient and safe removal.",
+        "knowledgeExtract": "The endpoint of nucleus fragmentation is defined by achievement of independently manageable fragments rather than completion of a predetermined number of chops. Transition to fragment removal is determined by the resulting tissue state, reflecting a cognitive rather than procedural boundary."
+      }
+    }
+  ]
+}
