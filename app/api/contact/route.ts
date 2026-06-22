@@ -44,6 +44,118 @@ function parseBody(body: unknown): ContactPayload | null {
   return payload;
 }
 
+function formatSubmittedTimestamp(date: Date) {
+  const dateLine = date.toLocaleDateString("en-GB", {
+    timeZone: "UTC",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const timeLine = `${date.toLocaleTimeString("en-US", {
+    timeZone: "UTC",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  })} UTC`;
+
+  return { dateLine, timeLine, full: `${dateLine}\n${timeLine}` };
+}
+
+function buildPlainTextEmail(payload: ContactPayload, submitted: string) {
+  const message = payload.message || "(Not provided)";
+
+  return [
+    "New SurgicalDataOS Request",
+    "",
+    "Name",
+    payload.name,
+    "",
+    "Organization",
+    payload.organization,
+    "",
+    "Email",
+    payload.email,
+    "",
+    "----------------------------------------",
+    "",
+    "Message",
+    "",
+    message,
+    "",
+    "----------------------------------------",
+    "",
+    "Submitted",
+    "",
+    submitted,
+  ].join("\n");
+}
+
+function buildHtmlEmail(payload: ContactPayload, submittedHtml: string) {
+  const message = payload.message || "(Not provided)";
+
+  return `
+    <div style="font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: #0f172a; line-height: 1.6; max-width: 560px;">
+      <h1 style="margin: 0 0 24px; font-size: 20px; font-weight: 600; letter-spacing: -0.01em;">
+        New SurgicalDataOS Request
+      </h1>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #64748b;">
+            Name
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0 0 16px; font-size: 15px; color: #0f172a;">
+            ${escapeHtml(payload.name)}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #64748b;">
+            Organization
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0 0 16px; font-size: 15px; color: #0f172a;">
+            ${escapeHtml(payload.organization)}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #64748b;">
+            Email
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 0 0 24px; font-size: 15px; color: #0f172a;">
+            <a href="mailto:${escapeHtml(payload.email)}" style="color: #0891b2; text-decoration: none;">
+              ${escapeHtml(payload.email)}
+            </a>
+          </td>
+        </tr>
+      </table>
+
+      <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 0 0 24px;" />
+
+      <p style="margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #64748b;">
+        Message
+      </p>
+      <p style="margin: 0 0 24px; font-size: 15px; white-space: pre-wrap; color: #0f172a;">
+        ${escapeHtml(message)}
+      </p>
+
+      <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 0 0 24px;" />
+
+      <p style="margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #64748b;">
+        Submitted
+      </p>
+      <p style="margin: 0; font-size: 15px; color: #475569; white-space: pre-line;">
+        ${submittedHtml}
+      </p>
+    </div>
+  `.trim();
+}
+
 export async function POST(request: Request) {
   try {
     const payload = parseBody(await request.json());
@@ -58,36 +170,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
 
-    const timestamp = new Date().toISOString();
+    const submitted = formatSubmittedTimestamp(new Date());
     const resend = new Resend(apiKey);
 
     const { error } = await resend.emails.send({
       from: "contact@surgicaldataos.org",
       to: "drmerinepaul@gmail.com",
+      replyTo: payload.email,
       subject: "New SurgicalDataOS Request Access",
-      text: [
-        "New SurgicalDataOS Request Access",
-        "",
-        `Name: ${payload.name}`,
-        `Email: ${payload.email}`,
-        `Organization: ${payload.organization}`,
-        "",
-        "Message:",
-        payload.message || "(Not provided)",
-        "",
-        `Submitted: ${timestamp}`,
-      ].join("\n"),
-      html: `
-        <div style="font-family: ui-sans-serif, system-ui, sans-serif; color: #0f172a; line-height: 1.6;">
-          <h2 style="margin: 0 0 16px; font-size: 20px;">New SurgicalDataOS Request Access</h2>
-          <p style="margin: 0 0 8px;"><strong>Name:</strong> ${escapeHtml(payload.name)}</p>
-          <p style="margin: 0 0 8px;"><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
-          <p style="margin: 0 0 16px;"><strong>Organization:</strong> ${escapeHtml(payload.organization)}</p>
-          <p style="margin: 0 0 8px;"><strong>Message:</strong></p>
-          <p style="margin: 0 0 16px; white-space: pre-wrap;">${escapeHtml(payload.message || "(Not provided)")}</p>
-          <p style="margin: 0; color: #64748b; font-size: 14px;"><strong>Submitted:</strong> ${escapeHtml(timestamp)}</p>
-        </div>
-      `.trim(),
+      text: buildPlainTextEmail(payload, submitted.full),
+      html: buildHtmlEmail(
+        payload,
+        `${escapeHtml(submitted.dateLine)}<br />${escapeHtml(submitted.timeLine)}`,
+      ),
     });
 
     if (error) {
