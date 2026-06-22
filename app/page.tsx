@@ -1,6 +1,7 @@
 "use client";
 
 import KnowledgeObjectExplorer from "@/components/KnowledgeObjectExplorer";
+import Link from "next/link";
 import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import {
   motion,
@@ -207,7 +208,7 @@ function HeroKnowledgeGraph() {
       className="relative mx-auto aspect-[480/520] w-full max-w-md"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      aria-hidden="true"
+      aria-label="Interactive knowledge graph visualization"
     >
       <motion.div
         className="absolute inset-0"
@@ -471,7 +472,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+    <div className="relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-100">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
@@ -489,11 +493,15 @@ export default function Home() {
 
       {/* Navigation */}
       <header className="relative z-10 border-b border-white/5">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-          <div className="flex items-center gap-3">
+        <nav
+          className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8"
+          aria-label="Main navigation"
+        >
+          <Link href="/" className="flex items-center gap-3" aria-label="SurgicalDataOS home">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500">
               <svg
                 className="h-5 w-5 text-slate-950"
+                aria-hidden="true"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={2}
@@ -514,36 +522,36 @@ export default function Home() {
             <span className="text-lg font-semibold tracking-tight">
               Surgical<span className="text-cyan-400">Data</span>OS
             </span>
-          </div>
+          </Link>
 
           <div className="hidden items-center gap-8 md:flex">
             <a
-              href="#problem"
-              className="text-sm text-slate-400 transition-colors hover:text-white"
+              href="#why-surgical-ai-falls-short"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
             >
               Problem
             </a>
             <a
               href="#knowledge-model"
-              className="text-sm text-slate-400 transition-colors hover:text-white"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
             >
               Knowledge Model
             </a>
             <a
               href="#platform"
-              className="text-sm text-slate-400 transition-colors hover:text-white"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
             >
               Platform
             </a>
             <a
               href="#about"
-              className="text-sm text-slate-400 transition-colors hover:text-white"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
             >
               About
             </a>
             <a
               href="#contact"
-              className="rounded-full bg-white px-5 py-2 text-sm font-medium text-slate-950 transition hover:bg-cyan-50"
+              className="rounded-full bg-white px-5 py-2 text-sm font-medium text-slate-950 transition duration-200 hover:bg-cyan-50"
             >
               Request Access
             </a>
@@ -551,9 +559,12 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10">
         {/* 1. HERO */}
-        <section className="mx-auto max-w-7xl px-6 pt-24 pb-32 lg:px-8 lg:pt-32">
+        <section
+          className="mx-auto max-w-7xl px-6 pt-24 pb-32 lg:px-8 lg:pt-32"
+          aria-label="Introduction"
+        >
           <div className="grid items-center gap-20 lg:grid-cols-2">
             <div className="reveal">
               <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 px-4 py-1.5 text-sm text-cyan-300">
@@ -582,9 +593,9 @@ export default function Home() {
               <div className="mt-12 flex flex-wrap items-center gap-4">
                 <a
                   href="#knowledge-model"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:brightness-110"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-7 py-3.5 text-sm font-semibold text-slate-950 transition duration-200 hover:brightness-110"
                 >
-                  Explore the Knowledge Model
+                  Explore SurgicalDataOS
                   <svg
                     className="h-4 w-4"
                     fill="none"
@@ -600,10 +611,10 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="#overview"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-3.5 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/10"
+                  href="#knowledge-object-explorer"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-3.5 text-sm font-medium text-slate-200 transition duration-200 hover:border-white/20 hover:bg-white/10"
                 >
-                  Watch 60-second Overview
+                  Explore the Knowledge Object Explorer
                   <svg
                     className="h-4 w-4"
                     fill="none"
@@ -632,392 +643,230 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Overview video */}
+        {/* 2. WHY CURRENT SURGICAL AI STILL FALLS SHORT */}
         <section
-          id="overview"
-          className="mx-auto max-w-7xl px-6 pb-32 lg:px-8"
-          aria-label="Surgical overview video"
+          id="why-surgical-ai-falls-short"
+          className="border-t border-white/5 bg-white/[0.01] py-32"
+          aria-labelledby="why-surgical-ai-heading"
         >
-          <div className="reveal mx-auto max-w-4xl">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 shadow-2xl backdrop-blur-xl">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                className="aspect-video h-auto w-full object-cover"
-                src="/videos/nucleus-chopping.mp4"
-              />
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="reveal mx-auto max-w-3xl">
+              <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-10 shadow-2xl backdrop-blur-xl sm:p-12">
+                <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
+                  The Gap
+                </p>
+                <h2
+                  id="why-surgical-ai-heading"
+                  className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
+                >
+                  Why Current Surgical AI Still Falls Short
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-slate-400">
+                  Object detection and segmentation tell a model{" "}
+                  <em className="text-slate-300 not-italic">where</em> things
+                  appear in a frame. They do not encode{" "}
+                  <em className="text-slate-300 not-italic">why</em> an action
+                  occurs,{" "}
+                  <em className="text-slate-300 not-italic">when</em> a phase
+                  transitions, or{" "}
+                  <em className="text-slate-300 not-italic">how</em> instrument
+                  motion relates to tissue response. Robotic cataract surgery
+                  demands causal, temporal, and intent-aware representations —
+                  not bounding boxes alone.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        <KnowledgeObjectExplorer />
-
-        {/* 2. THE PROBLEM */}
+        {/* 3. SURGICAL AI COMPARISON */}
         <section
-          id="problem"
-          className="border-t border-white/5 bg-white/[0.01] py-32"
+          id="surgical-ai-comparison"
+          className="py-32"
+          aria-label="Surgical AI comparison"
         >
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="reveal grid gap-8 lg:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-8 shadow-xl backdrop-blur-xl">
+                <div className="mb-8 flex items-center gap-3">
+                  <div className="h-px flex-1 bg-slate-700" />
+                  <span className="font-mono text-xs tracking-wider text-slate-500 uppercase">
+                    Current Surgical AI
+                  </span>
+                  <div className="h-px flex-1 bg-slate-700" />
+                </div>
+                <div className="flex flex-col items-center gap-3">
+                  {[
+                    "Video",
+                    "Frames",
+                    "Pixels",
+                    "Segmentation",
+                    "Detection",
+                    "Action Classification",
+                    "Visual Understanding",
+                  ].map((step, i, arr) => (
+                    <div
+                      key={step}
+                      className="flex w-full flex-col items-center gap-3"
+                    >
+                      <div className="w-full rounded-xl border border-white/10 bg-slate-950/80 px-6 py-3.5 text-center">
+                        <span className="text-sm font-medium text-slate-300">
+                          {step}
+                        </span>
+                      </div>
+                      {i < arr.length - 1 && (
+                        <span className="text-lg text-slate-600">↓</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.03] p-8 shadow-xl shadow-cyan-500/5 backdrop-blur-xl">
+                <div className="mb-8 flex items-center gap-3">
+                  <div className="h-px flex-1 bg-cyan-500/20" />
+                  <span className="font-mono text-xs tracking-wider text-cyan-400 uppercase">
+                    SurgicalDataOS
+                  </span>
+                  <div className="h-px flex-1 bg-cyan-500/20" />
+                </div>
+                <div className="flex flex-col items-center gap-3">
+                  {[
+                    "Video",
+                    "Knowledge Objects",
+                    "Knowledge Graph",
+                    "Surgical Reasoning",
+                    "Foundation Model",
+                  ].map((step, i, arr) => (
+                    <div
+                      key={step}
+                      className="flex w-full flex-col items-center gap-3"
+                    >
+                      <div className="w-full rounded-xl border border-cyan-500/15 bg-cyan-500/[0.04] px-6 py-3.5 text-center">
+                        <span className="text-sm font-medium text-slate-200">
+                          {step}
+                        </span>
+                      </div>
+                      {i < arr.length - 1 && (
+                        <span className="text-lg text-cyan-500/50">↓</span>
+                      )}
+                    </div>
+                  ))}
+                  <span className="text-lg text-cyan-500/50">↓</span>
+                  <div className="flex w-full flex-col gap-2">
+                    {[
+                      "Robotic Surgery",
+                      "Simulation",
+                      "Decision Support",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        className="rounded-xl border border-cyan-500/15 bg-cyan-500/[0.04] px-6 py-3.5 text-center"
+                      >
+                        <span className="text-sm font-medium text-slate-200">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="reveal mx-auto mt-20 max-w-3xl text-center text-lg leading-relaxed text-slate-400">
+              Pixels describe what is visible. Knowledge Objects describe what
+              the surgeon understands.
+            </p>
+          </div>
+        </section>
+
+        {/* 10. FROM SURGICAL VIDEO TO MACHINE KNOWLEDGE */}
+        <section id="machine-knowledge" className="py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="reveal mx-auto max-w-3xl text-center">
               <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
-                The Problem
+                From Surgical Video to Machine Knowledge
               </p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                Current Surgical AI is trained on pixels.
-                <br />
-                <span className="text-slate-500">
-                  Not on surgical knowledge.
-                </span>
-              </h2>
-              <p className="mt-8 text-lg leading-relaxed text-slate-400">
-                Object detection and segmentation tell a model{" "}
-                <em className="text-slate-300 not-italic">where</em> things
-                appear in a frame. They do not encode{" "}
-                <em className="text-slate-300 not-italic">why</em> an action
-                occurs,{" "}
-                <em className="text-slate-300 not-italic">when</em> a phase
-                transitions, or{" "}
-                <em className="text-slate-300 not-italic">how</em> instrument
-                motion relates to tissue response. Robotic cataract surgery
-                demands causal, temporal, and intent-aware representations —
-                not bounding boxes alone.
-              </p>
-            </div>
-
-            <div className="reveal mt-20 grid gap-6 lg:grid-cols-2">
-              {/* Pixel-based */}
-              <div className="rounded-2xl border border-white/5 bg-slate-900/40 p-8 backdrop-blur-sm">
-                <div className="mb-6 flex items-center gap-3">
-                  <div className="h-px flex-1 bg-slate-700" />
-                  <span className="font-mono text-xs tracking-wider text-slate-500 uppercase">
-                    Pixel-based AI
-                  </span>
-                  <div className="h-px flex-1 bg-slate-700" />
-                </div>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/5 bg-slate-950">
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-950" />
-                  {/* Simulated pixel grid */}
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(0deg, transparent, transparent 11px, rgba(148,163,184,0.3) 11px, rgba(148,163,184,0.3) 12px), repeating-linear-gradient(90deg, transparent, transparent 11px, rgba(148,163,184,0.3) 11px, rgba(148,163,184,0.3) 12px)",
-                    }}
-                  />
-                  {/* Bounding boxes */}
-                  {[
-                    { top: "20%", left: "25%", w: "35%", h: "30%" },
-                    { top: "45%", left: "50%", w: "28%", h: "22%" },
-                    { top: "60%", left: "15%", w: "40%", h: "25%" },
-                  ].map((box, i) => (
-                    <div
-                      key={i}
-                      className="absolute border border-red-400/40 bg-red-400/5"
-                      style={{
-                        top: box.top,
-                        left: box.left,
-                        width: box.w,
-                        height: box.h,
-                      }}
-                    >
-                      <span className="absolute -top-4 left-0 font-mono text-[9px] text-red-400/70">
-                        class_{i + 1}: 0.{87 - i * 3}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <ul className="mt-6 space-y-3">
-                  {[
-                    "Detects objects in isolated frames",
-                    "No temporal or causal structure",
-                    "Cannot reason about surgical intent",
-                    "Fails under domain shift and occlusion",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-sm text-slate-500"
-                    >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-slate-600" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Knowledge-based */}
-              <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.03] p-8 backdrop-blur-sm">
-                <div className="mb-6 flex items-center gap-3">
-                  <div className="h-px flex-1 bg-cyan-500/20" />
-                  <span className="font-mono text-xs tracking-wider text-cyan-400 uppercase">
-                    Knowledge-based AI
-                  </span>
-                  <div className="h-px flex-1 bg-cyan-500/20" />
-                </div>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-cyan-500/10 bg-slate-950">
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-800/80 to-slate-950" />
-                  {/* Knowledge graph mini */}
-                  <svg
-                    viewBox="0 0 320 240"
-                    className="absolute inset-0 h-full w-full p-6"
-                  >
-                    {[
-                      [160, 30, 160, 70],
-                      [160, 90, 160, 130],
-                      [160, 150, 100, 190],
-                      [160, 150, 220, 190],
-                      [100, 210, 160, 230],
-                      [220, 210, 160, 230],
-                    ].map(([x1, y1, x2, y2], i) => (
-                      <line
-                        key={i}
-                        x1={x1}
-                        y1={y1}
-                        x2={x2}
-                        y2={y2}
-                        stroke="#22d3ee"
-                        strokeOpacity="0.4"
-                        strokeWidth="1"
-                        strokeDasharray="4 4"
-                        style={{
-                          animation: "edge-flow 2s linear infinite",
-                          animationDelay: `${i * 0.3}s`,
-                        }}
-                      />
-                    ))}
-                    {[
-                      { x: 160, y: 24, label: "Phase" },
-                      { x: 160, y: 84, label: "Action" },
-                      { x: 160, y: 144, label: "Instrument" },
-                      { x: 100, y: 200, label: "Tissue" },
-                      { x: 220, y: 200, label: "Outcome" },
-                      { x: 160, y: 230, label: "Decision" },
-                    ].map((node) => (
-                      <g key={node.label}>
-                        <rect
-                          x={node.x - 36}
-                          y={node.y - 10}
-                          width="72"
-                          height="20"
-                          rx="4"
-                          fill="rgba(34,211,238,0.08)"
-                          stroke="rgba(34,211,238,0.3)"
-                          strokeWidth="0.75"
-                        />
-                        <text
-                          x={node.x}
-                          y={node.y + 4}
-                          textAnchor="middle"
-                          fill="#67e8f9"
-                          fontSize="9"
-                          fontFamily="ui-monospace, monospace"
-                        >
-                          {node.label}
-                        </text>
-                      </g>
-                    ))}
-                  </svg>
-                </div>
-                <ul className="mt-6 space-y-3">
-                  {[
-                    "Structured representation of surgical semantics",
-                    "Temporal, causal, and intent-aware reasoning",
-                    "Enables robotic planning and skill assessment",
-                    "Generalizes across surgeons and equipment",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-sm text-slate-300"
-                    >
-                      <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-cyan-500/10">
-                        <svg
-                          className="h-2.5 w-2.5 text-cyan-400"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={3}
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M4.5 12.75l6 6 9-13.5"
-                          />
-                        </svg>
-                      </div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 3. THE KNOWLEDGE MODEL */}
-        <section id="knowledge-model" className="py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="reveal mx-auto max-w-2xl text-center">
-              <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
-                The Knowledge Model
-              </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                A representation framework for machine-understandable surgery
+                What is SurgicalDataOS?
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-slate-400">
-                SurgicalDataOS defines a formal ontology that transforms raw
-                surgical video into a queryable knowledge graph — connecting
-                perception, action, anatomy, and outcome at every level of
-                abstraction.
+                Every surgical procedure is represented as a sequence of Machine
+                Knowledge Objects (MKOs)—structured computational
+                representations that preserve what the surgeon observed,
+                interpreted, decided and performed. Together these MKOs form a
+                machine-readable Knowledge Graph capable of supporting
+                explainable AI, surgical robotics, simulation, education and
+                collaborative research.
               </p>
             </div>
 
-            <div className="reveal mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="reveal mt-20 grid gap-6 lg:grid-cols-3">
               {[
                 {
-                  term: "Video",
-                  def: "Continuous surgical recording as the root signal source.",
+                  id: "MKO-0001",
+                  phase: "Nucleus Fragmentation",
+                  observation: "Stable phaco fixation established.",
+                  interpretation:
+                    "The nucleus is securely stabilised, permitting controlled transmission of chopping forces.",
+                  decision: "Advance the chopper towards the equator.",
+                  action: "Controlled chopper advancement.",
                 },
                 {
-                  term: "Frame",
-                  def: "Atomic temporal unit indexed for precise event alignment.",
+                  id: "MKO-0002",
+                  phase: "Primary Nuclear Fracture",
+                  observation:
+                    "Opposing instrument forces create a central crack.",
+                  interpretation:
+                    "Mechanical stress exceeds nuclear cohesion.",
+                  decision:
+                    "Complete the fracture while maintaining chamber stability.",
+                  action: "Vertical chop executed.",
                 },
                 {
-                  term: "Event",
-                  def: "Time-bounded occurrence with defined onset and offset.",
+                  id: "MKO-0003",
+                  phase: "Quadrant Removal",
+                  observation: "Fragment engaged under stable occlusion.",
+                  interpretation:
+                    "Continuous aspiration allows controlled centralisation.",
+                  decision:
+                    "Maintain occlusion while repositioning the fragment.",
+                  action: "Fragment centralised and emulsified.",
                 },
-                {
-                  term: "Action",
-                  def: "Deliberate surgical maneuver performed by the operator.",
-                },
-                {
-                  term: "Instrument",
-                  def: "Tool identity, pose trajectory, and interaction state.",
-                },
-                {
-                  term: "Anatomy",
-                  def: "Ocular structures with spatial relationships and geometry.",
-                },
-                {
-                  term: "Intent",
-                  def: "Clinical objective driving the current surgical decision.",
-                },
-                {
-                  term: "Decision",
-                  def: "Branch point where the surgeon selects among alternatives.",
-                },
-                {
-                  term: "Outcome",
-                  def: "Measured result linking action sequence to patient state.",
-                },
-              ].map((item, i) => (
+              ].map((mko) => (
                 <div
-                  key={item.term}
-                  className="group rounded-2xl border border-white/5 bg-white/[0.02] p-7 transition hover:border-cyan-500/20 hover:bg-white/[0.04]"
-                  style={{ transitionDelay: `${i * 40}ms` }}
+                  key={mko.id}
+                  className="flex flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-8 shadow-xl backdrop-blur-xl transition duration-300 hover:border-cyan-500/20"
                 >
-                  <div className="mb-3 font-mono text-xs text-cyan-400/60">
-                    entity
-                  </div>
-                  <h3 className="text-lg font-semibold text-white">
-                    {item.term}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">
-                    {item.def}
+                  <p className="font-mono text-[10px] tracking-widest text-cyan-400/60 uppercase">
+                    {mko.id}
                   </p>
+                  <p className="mt-4 text-xs font-medium tracking-widest text-slate-500 uppercase">
+                    Phase
+                  </p>
+                  <h3 className="mt-1 text-lg font-semibold text-white">
+                    {mko.phase}
+                  </h3>
+                  <div className="mt-6 flex-1 space-y-5">
+                    {(
+                      [
+                        ["Observation", mko.observation],
+                        ["Interpretation", mko.interpretation],
+                        ["Decision", mko.decision],
+                        ["Action", mko.action],
+                      ] as const
+                    ).map(([label, value]) => (
+                      <div key={label}>
+                        <p className="text-xs font-medium tracking-widest text-slate-500 uppercase">
+                          {label}
+                        </p>
+                        <p className="mt-1.5 text-sm leading-relaxed text-slate-300">
+                          {value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
-            </div>
-
-            <div className="reveal mt-6 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-950/30 via-slate-900/50 to-teal-950/30 p-8 text-center backdrop-blur-sm sm:p-12">
-              <div className="font-mono text-xs tracking-widest text-cyan-400/80 uppercase">
-                Unified Structure
-              </div>
-              <h3 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                Knowledge Graph
-              </h3>
-              <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-                All entities connect through typed edges — enabling traversal
-                from any frame to its surgical context, downstream outcomes,
-                and training signal for AI and robotic systems.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 4. REPRESENTATION STANDARDS */}
-        <section
-          id="standards"
-          className="border-t border-white/5 bg-white/[0.01] py-32"
-        >
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid items-start gap-20 lg:grid-cols-2">
-              <div className="reveal">
-                <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
-                  Representation Standards
-                </p>
-                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Hierarchical annotation framework
-                </h2>
-                <p className="mt-6 text-lg leading-relaxed text-slate-400">
-                  Every annotation in SurgicalDataOS maps to a defined level in
-                  our taxonomy — from full procedure context down to
-                  sub-millimeter tissue geometry. This hierarchy ensures
-                  consistency, composability, and machine-readability across
-                  datasets and institutions.
-                </p>
-              </div>
-
-              <div className="reveal space-y-0">
-                {[
-                  "Video",
-                  "Procedure",
-                  "Phase",
-                  "Action",
-                  "Micro-action",
-                  "Instrument",
-                  "Tissue",
-                  "Geometry",
-                  "Events",
-                  "Complications",
-                  "Outcome",
-                ].map((level, i, arr) => (
-                  <div key={level} className="relative flex items-center gap-4">
-                    <div className="flex flex-col items-center">
-                      <div
-                        className={`flex h-10 w-10 items-center justify-center rounded-lg border font-mono text-xs ${
-                          i === 0 || i === arr.length - 1
-                            ? "border-cyan-500/30 bg-cyan-500/10 text-cyan-300"
-                            : "border-white/10 bg-white/[0.03] text-slate-400"
-                        }`}
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </div>
-                      {i < arr.length - 1 && (
-                        <div className="h-6 w-px bg-gradient-to-b from-cyan-500/30 to-cyan-500/5" />
-                      )}
-                    </div>
-                    <div
-                      className={`flex-1 rounded-xl border px-5 py-3.5 transition ${
-                        i === 0 || i === arr.length - 1
-                          ? "border-cyan-500/20 bg-cyan-500/[0.04]"
-                          : "border-white/5 bg-white/[0.02]"
-                      }`}
-                    >
-                      <span
-                        className={`text-sm font-medium ${
-                          i === 0 || i === arr.length - 1
-                            ? "text-cyan-200"
-                            : "text-slate-300"
-                        }`}
-                      >
-                        {level}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -1036,7 +885,7 @@ export default function Home() {
                   SurgicalDataOS represents what is happening.
                 </span>
               </h2>
-              <p className="mt-8 text-lg leading-relaxed text-slate-400">
+              <p className="mt-6 text-lg leading-relaxed text-slate-400">
                 Computer vision identifies objects in individual frames. Surgical
                 intelligence requires understanding temporal events, anatomical
                 relationships, instrument interactions, surgical intent and
@@ -1090,7 +939,7 @@ export default function Home() {
               ].map((card) => (
                 <div
                   key={card.heading}
-                  className="flex flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-8 backdrop-blur-xl transition hover:border-cyan-500/20"
+                  className="flex flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-8 shadow-xl backdrop-blur-xl transition duration-300 hover:border-cyan-500/20"
                 >
                   <p className="font-mono text-[10px] tracking-widest text-cyan-400/60 uppercase">
                     {card.label}
@@ -1161,22 +1010,191 @@ export default function Home() {
           </div>
         </section>
 
+        <KnowledgeObjectExplorer />
+
+        {/* 3. THE KNOWLEDGE MODEL */}
+        <section id="knowledge-model" className="py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="reveal mx-auto max-w-3xl text-center">
+              <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
+                The Knowledge Model
+              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                A representation framework for machine-understandable surgery
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-slate-400">
+                SurgicalDataOS defines a formal ontology that transforms raw
+                surgical video into a queryable knowledge graph — connecting
+                perception, action, anatomy, and outcome at every level of
+                abstraction.
+              </p>
+            </div>
+
+            <div className="reveal mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  term: "Video",
+                  def: "Continuous surgical recording as the root signal source.",
+                },
+                {
+                  term: "Frame",
+                  def: "Atomic temporal unit indexed for precise event alignment.",
+                },
+                {
+                  term: "Event",
+                  def: "Time-bounded occurrence with defined onset and offset.",
+                },
+                {
+                  term: "Action",
+                  def: "Deliberate surgical maneuver performed by the operator.",
+                },
+                {
+                  term: "Instrument",
+                  def: "Tool identity, pose trajectory, and interaction state.",
+                },
+                {
+                  term: "Anatomy",
+                  def: "Ocular structures with spatial relationships and geometry.",
+                },
+                {
+                  term: "Intent",
+                  def: "Clinical objective driving the current surgical decision.",
+                },
+                {
+                  term: "Decision",
+                  def: "Branch point where the surgeon selects among alternatives.",
+                },
+                {
+                  term: "Outcome",
+                  def: "Measured result linking action sequence to patient state.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={item.term}
+                  className="group rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition duration-300 hover:border-cyan-500/20 hover:bg-white/[0.04]"
+                  style={{ transitionDelay: `${i * 40}ms` }}
+                >
+                  <div className="mb-3 font-mono text-xs text-cyan-400/60">
+                    entity
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">
+                    {item.term}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                    {item.def}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="reveal mt-20 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-950/30 via-slate-900/50 to-teal-950/30 p-8 text-center shadow-xl backdrop-blur-xl sm:p-12">
+              <div className="font-mono text-xs tracking-widest text-cyan-400/80 uppercase">
+                Unified Structure
+              </div>
+              <h3 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                Knowledge Graph
+              </h3>
+              <p className="mx-auto mt-4 max-w-3xl text-slate-400">
+                All entities connect through typed edges — enabling traversal
+                from any frame to its surgical context, downstream outcomes,
+                and training signal for AI and robotic systems.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 4. REPRESENTATION STANDARDS */}
+        <section
+          id="standards"
+          className="border-t border-white/5 bg-white/[0.01] py-32"
+        >
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid items-start gap-20 lg:grid-cols-2">
+              <div className="reveal">
+                <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
+                  Representation Standards
+                </p>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                  Hierarchical annotation framework
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-slate-400">
+                  Every annotation in SurgicalDataOS maps to a defined level in
+                  our taxonomy — from full procedure context down to
+                  sub-millimeter tissue geometry. This hierarchy ensures
+                  consistency, composability, and machine-readability across
+                  datasets and institutions.
+                </p>
+              </div>
+
+              <div className="reveal space-y-0">
+                {[
+                  "Video",
+                  "Procedure",
+                  "Phase",
+                  "Action",
+                  "Micro-action",
+                  "Instrument",
+                  "Tissue",
+                  "Geometry",
+                  "Events",
+                  "Complications",
+                  "Outcome",
+                ].map((level, i, arr) => (
+                  <div key={level} className="relative flex items-center gap-4">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className={`flex h-10 w-10 items-center justify-center rounded-lg border font-mono text-xs ${
+                          i === 0 || i === arr.length - 1
+                            ? "border-cyan-500/30 bg-cyan-500/10 text-cyan-300"
+                            : "border-white/10 bg-white/[0.03] text-slate-400"
+                        }`}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      {i < arr.length - 1 && (
+                        <div className="h-6 w-px bg-gradient-to-b from-cyan-500/30 to-cyan-500/5" />
+                      )}
+                    </div>
+                    <div
+                      className={`flex-1 rounded-xl border px-5 py-3.5 transition ${
+                        i === 0 || i === arr.length - 1
+                          ? "border-cyan-500/20 bg-cyan-500/[0.04]"
+                          : "border-white/5 bg-white/[0.02]"
+                      }`}
+                    >
+                      <span
+                        className={`text-sm font-medium ${
+                          i === 0 || i === arr.length - 1
+                            ? "text-cyan-200"
+                            : "text-slate-300"
+                        }`}
+                      >
+                        {level}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 6. APPLICATIONS */}
         <section
           id="applications"
           className="border-t border-white/5 bg-white/[0.01] py-32"
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="reveal mx-auto max-w-2xl text-center">
+            <div className="reveal mx-auto max-w-3xl text-center">
               <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
                 Applications
               </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                 One knowledge layer, many frontiers
               </h2>
             </div>
 
-            <div className="reveal mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="reveal mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   title: "Research",
@@ -1209,7 +1227,7 @@ export default function Home() {
               ].map((app) => (
                 <div
                   key={app.title}
-                  className="group rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition hover:border-cyan-500/20 hover:bg-white/[0.04]"
+                  className="group rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition duration-300 hover:border-cyan-500/20 hover:bg-white/[0.04]"
                 >
                   <h3 className="text-lg font-semibold text-white">
                     {app.title}
@@ -1226,16 +1244,16 @@ export default function Home() {
         {/* 7. PLATFORM */}
         <section id="platform" className="py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="reveal mx-auto max-w-2xl text-center">
+            <div className="reveal mx-auto max-w-3xl text-center">
               <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
                 Platform
               </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                 Infrastructure for surgical knowledge at scale
               </h2>
             </div>
 
-            <div className="reveal mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="reveal mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   name: "Annotation Studio",
@@ -1265,7 +1283,7 @@ export default function Home() {
               ].map((product) => (
                 <div
                   key={product.name}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 p-8 shadow-xl backdrop-blur-xl transition hover:border-cyan-500/20"
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 p-8 shadow-xl backdrop-blur-xl transition duration-300 hover:border-cyan-500/20"
                 >
                   <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-cyan-500/5 blur-2xl transition group-hover:bg-cyan-500/10" />
                   <div className="relative">
@@ -1314,109 +1332,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 10. FROM SURGICAL VIDEO TO MACHINE KNOWLEDGE */}
-        <section id="machine-knowledge" className="py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="reveal mx-auto max-w-3xl text-center">
-              <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
-                From Surgical Video to Machine Knowledge
-              </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                From Surgical Video to Machine Knowledge
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-slate-400">
-                Every surgical procedure is represented as a sequence of Machine
-                Knowledge Objects (MKOs)—structured computational
-                representations that preserve what the surgeon observed,
-                interpreted, decided and performed. Together these MKOs form a
-                machine-readable Knowledge Graph capable of supporting
-                explainable AI, surgical robotics, simulation, education and
-                collaborative research.
-              </p>
-            </div>
-
-            <div className="reveal mt-20 grid gap-6 lg:grid-cols-3">
-              {[
-                {
-                  id: "MKO-0001",
-                  phase: "Nucleus Fragmentation",
-                  observation: "Stable phaco fixation established.",
-                  interpretation:
-                    "The nucleus is securely stabilised, permitting controlled transmission of chopping forces.",
-                  decision: "Advance the chopper towards the equator.",
-                  action: "Controlled chopper advancement.",
-                },
-                {
-                  id: "MKO-0002",
-                  phase: "Primary Nuclear Fracture",
-                  observation:
-                    "Opposing instrument forces create a central crack.",
-                  interpretation:
-                    "Mechanical stress exceeds nuclear cohesion.",
-                  decision:
-                    "Complete the fracture while maintaining chamber stability.",
-                  action: "Vertical chop executed.",
-                },
-                {
-                  id: "MKO-0003",
-                  phase: "Quadrant Removal",
-                  observation: "Fragment engaged under stable occlusion.",
-                  interpretation:
-                    "Continuous aspiration allows controlled centralisation.",
-                  decision:
-                    "Maintain occlusion while repositioning the fragment.",
-                  action: "Fragment centralised and emulsified.",
-                },
-              ].map((mko) => (
-                <div
-                  key={mko.id}
-                  className="flex flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-8 backdrop-blur-xl transition hover:border-cyan-500/20"
-                >
-                  <p className="font-mono text-[10px] tracking-widest text-cyan-400/60 uppercase">
-                    {mko.id}
-                  </p>
-                  <p className="mt-4 text-xs font-medium tracking-widest text-slate-500 uppercase">
-                    Phase
-                  </p>
-                  <h3 className="mt-1 text-lg font-semibold text-white">
-                    {mko.phase}
-                  </h3>
-                  <div className="mt-6 flex-1 space-y-5">
-                    {(
-                      [
-                        ["Observation", mko.observation],
-                        ["Interpretation", mko.interpretation],
-                        ["Decision", mko.decision],
-                        ["Action", mko.action],
-                      ] as const
-                    ).map(([label, value]) => (
-                      <div key={label}>
-                        <p className="text-xs font-medium tracking-widest text-slate-500 uppercase">
-                          {label}
-                        </p>
-                        <p className="mt-1.5 text-sm leading-relaxed text-slate-300">
-                          {value}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* 11. BEYOND ANNOTATION */}
         <section
           id="beyond-annotation"
           className="border-t border-white/5 bg-white/[0.01] py-32"
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="reveal mx-auto max-w-2xl text-center">
+            <div className="reveal mx-auto max-w-3xl text-center">
               <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
                 Beyond Annotation
               </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                 Beyond Annotation
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-slate-400">
@@ -1427,7 +1353,7 @@ export default function Home() {
             </div>
 
             <div className="reveal mt-20 grid gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-white/5 bg-slate-900/40 p-8 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-8 shadow-xl backdrop-blur-xl">
                 <div className="mb-6 flex items-center gap-3">
                   <div className="h-px flex-1 bg-slate-700" />
                   <span className="font-mono text-xs tracking-wider text-slate-500 uppercase">
@@ -1454,7 +1380,7 @@ export default function Home() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.03] p-8 backdrop-blur-sm">
+              <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.03] p-8 shadow-xl shadow-cyan-500/5 backdrop-blur-xl">
                 <div className="mb-6 flex items-center gap-3">
                   <div className="h-px flex-1 bg-cyan-500/20" />
                   <span className="font-mono text-xs tracking-wider text-cyan-400 uppercase">
@@ -1501,11 +1427,11 @@ export default function Home() {
         {/* 12. RESEARCH INITIATIVE */}
         <section id="research-initiative" className="py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="reveal mx-auto max-w-2xl">
+            <div className="reveal mx-auto max-w-3xl">
               <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
                 Research Initiative
               </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                 Research Initiative
               </h2>
               <div className="mt-8 space-y-6 text-lg leading-relaxed text-slate-400">
@@ -1537,11 +1463,11 @@ export default function Home() {
           className="border-t border-white/5 bg-white/[0.01] py-32"
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="reveal mx-auto max-w-2xl text-center">
+            <div className="reveal mx-auto max-w-3xl text-center">
               <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
                 Collaboration
               </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                 Building Surgical Intelligence Together
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-slate-400">
@@ -1556,7 +1482,7 @@ export default function Home() {
               <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
                 <a
                   href="mailto:hello@surgicaldataos.com"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-8 py-3.5 text-sm font-semibold text-slate-950 transition hover:brightness-110"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-8 py-3.5 text-sm font-semibold text-slate-950 transition duration-200 hover:brightness-110"
                 >
                   Get in Touch
                 </a>
@@ -1564,13 +1490,13 @@ export default function Home() {
                   href="https://github.com/Merinepaul/surgical-dataos-clean"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/10"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-medium text-slate-200 transition duration-200 hover:border-white/20 hover:bg-white/10"
                 >
                   View GitHub
                 </a>
                 <a
-                  href="#"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/10"
+                  href="#research-initiative"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-medium text-slate-200 transition duration-200 hover:border-white/20 hover:bg-white/10"
                 >
                   Read White Paper
                 </a>
@@ -1580,17 +1506,17 @@ export default function Home() {
         </section>
 
         {/* 9. CONTACT */}
-        <section id="contact" className="mx-auto max-w-7xl px-6 pb-32 lg:px-8">
-          <div className="reveal relative overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-950/50 via-slate-900 to-teal-950/50 px-8 py-20 text-center sm:px-16">
+        <section id="contact" className="mx-auto max-w-7xl px-6 pt-32 pb-32 lg:px-8">
+          <div className="reveal relative overflow-hidden rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-950/50 via-slate-900 to-teal-950/50 px-8 py-20 text-center shadow-xl sm:px-16">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.08),transparent_60%)]" />
             <div className="relative">
               <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
                 Contact
               </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                 Build the knowledge layer with us
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-slate-400">
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-400">
                 Whether you are advancing surgical AI research, developing
                 robotic platforms, or curating clinical datasets — we want to
                 hear from you.
@@ -1598,19 +1524,19 @@ export default function Home() {
               <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
                 <a
                   href="mailto:hello@surgicaldataos.com"
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-50"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-950 transition duration-200 hover:bg-cyan-50"
                 >
                   Request Access
                 </a>
                 <a
                   href="mailto:collaborate@surgicaldataos.com"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/5"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-slate-200 transition duration-200 hover:border-white/20 hover:bg-white/5"
                 >
                   Collaborate
                 </a>
                 <a
                   href="mailto:research@surgicaldataos.com"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/5"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-slate-200 transition duration-200 hover:border-white/20 hover:bg-white/5"
                 >
                   Research Partnerships
                 </a>
@@ -1621,13 +1547,17 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-white/5 bg-slate-950">
+      <footer
+        className="relative z-10 border-t border-white/5 bg-slate-950"
+        aria-label="Site footer"
+      >
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500">
                 <svg
                   className="h-4 w-4 text-slate-950"
+                  aria-hidden="true"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2}

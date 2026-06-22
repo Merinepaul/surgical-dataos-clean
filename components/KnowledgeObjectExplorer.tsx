@@ -1,5 +1,6 @@
 "use client";
 
+import ConceptualKnowledgeGraph from "@/components/ConceptualKnowledgeGraph";
 import { useEffect, useRef, useState } from "react";
 import dataset from "@/data/knowledgeObjects/SDOS-REF-001.json";
 
@@ -147,7 +148,7 @@ export default function KnowledgeObjectExplorer() {
               />
             </div>
             <p className="mt-4 text-xs leading-relaxed text-slate-500">
-              Full procedure reference video
+              Reference Video
             </p>
           </div>
 
@@ -235,7 +236,7 @@ export default function KnowledgeObjectExplorer() {
               <div className="pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-cyan-500/5 blur-2xl" />
               <div className="relative space-y-5">
                 <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
-                  Dataset Information
+                  Reference Dataset
                 </p>
 
                 {DATASET_FIELDS.map(({ label, key }) => (
@@ -255,14 +256,23 @@ export default function KnowledgeObjectExplorer() {
           </div>
         </div>
 
-        {/* Knowledge Graph placeholder */}
-        <div className="reveal mx-auto mt-20 max-w-2xl text-center">
-          <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
-            Knowledge Graph
-          </p>
-          <p className="mt-4 text-lg text-slate-500">
-            Coming in next implementation.
-          </p>
+        {/* Knowledge Graph */}
+        <div className="reveal mx-auto mt-20 max-w-4xl">
+          <div className="text-center">
+            <p className="text-xs font-medium tracking-widest text-cyan-400/80 uppercase">
+              Knowledge Graph
+            </p>
+            <h3 className="mt-4 text-2xl font-bold tracking-tight sm:text-3xl">
+              From Knowledge Objects to Knowledge Graphs
+            </h3>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-400">
+              Every Knowledge Object becomes a connected node within the
+              SurgicalDataOS ontology, linking surgical observations, decisions,
+              actions, tissues, instruments and outcomes into a machine-readable
+              graph for AI, robotics and simulation.
+            </p>
+          </div>
+          <ConceptualKnowledgeGraph />
         </div>
       </div>
     </section>
