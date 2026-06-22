@@ -1,6 +1,7 @@
 "use client";
 
 import KnowledgeObjectExplorer from "@/components/KnowledgeObjectExplorer";
+import RequestAccessModal from "@/components/RequestAccessModal";
 import Link from "next/link";
 import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import {
@@ -1215,13 +1216,10 @@ export default function Home() {
                 platforms, or curating clinical datasets — we want to hear from
                 you.
               </p>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-                <a
-                  href="mailto:hello@surgicaldataos.com"
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-950 transition duration-200 hover:bg-cyan-50"
-                >
-                  Request Access
-                </a>
+              <div className="mt-10">
+                <RequestAccessModal />
+              </div>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
                 <a
                   href="mailto:collaborate@surgicaldataos.com"
                   className="inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-slate-200 transition duration-200 hover:border-white/20 hover:bg-white/5"
