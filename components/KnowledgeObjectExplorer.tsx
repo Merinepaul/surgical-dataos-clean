@@ -273,6 +273,11 @@ export default function KnowledgeObjectExplorer() {
             </p>
           </div>
           <ConceptualKnowledgeGraph />
+          <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-slate-500">
+            Conceptual illustration only: this interactive graph is not a
+            complete clinical knowledge graph, a validated operative model, or a
+            production clinical or autonomous-surgery system.
+          </p>
         </div>
       </div>
     </section>

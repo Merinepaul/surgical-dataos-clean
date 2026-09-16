@@ -1,5 +1,13 @@
 "use client";
 
+import {
+  ApplicationsGrid,
+  KnowledgeGraphRelationshipsSection,
+  KoRelationshipsSection,
+  ScopeDisclaimerSection,
+  SurgeonValidatedWorkflowSection,
+} from "@/components/AlignmentSections";
+import { WHITE_PAPER_PDF_PATH } from "@/lib/white-paper";
 import KnowledgeObjectExplorer from "@/components/KnowledgeObjectExplorer";
 import RequestAccessModal from "@/components/RequestAccessModal";
 import Link from "next/link";
@@ -526,16 +534,34 @@ export default function Home() {
               Problem
             </a>
             <a
-              href="#machine-knowledge"
+              href="#knowledge-graph"
               className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
             >
-              Knowledge Model
+              Knowledge Graph
+            </a>
+            <a
+              href="#workflow"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
+            >
+              Workflow
+            </a>
+            <a
+              href="#applications"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
+            >
+              Applications
             </a>
             <a
               href="#platform"
               className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
             >
               Future Platform
+            </a>
+            <a
+              href="#scope"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-white"
+            >
+              Scope
             </a>
             <a
               href="#about"
@@ -860,6 +886,10 @@ export default function Home() {
           </div>
         </section>
 
+        <KnowledgeGraphRelationshipsSection />
+        <KoRelationshipsSection />
+        <SurgeonValidatedWorkflowSection />
+
         {/* 5. BEYOND COMPUTER VISION */}
         <section id="beyond-vision" className="py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -1016,50 +1046,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="reveal mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  title: "Research",
-                  desc: "Accelerate hypothesis testing with queryable knowledge graphs instead of raw video archives.",
-                },
-                {
-                  title: "Robotic Surgery",
-                  desc: "Train manipulation policies on action-outcome pairs with temporal and causal alignment.",
-                },
-                {
-                  title: "Foundation Models",
-                  desc: "Pre-train vision-language models on semantically rich operative narratives, not pixel co-occurrence.",
-                },
-                {
-                  title: "Simulation",
-                  desc: "Drive physics-informed simulators with real procedure dynamics, instrument trajectories, and tissue response.",
-                },
-                {
-                  title: "Skill Assessment",
-                  desc: "Quantify proficiency through decision trees, complication rates, and micro-action efficiency.",
-                },
-                {
-                  title: "Autonomous Workflow",
-                  desc: "Enable phase-aware automation that understands context, not just detects objects in frame.",
-                },
-                {
-                  title: "Clinical Decision Support",
-                  desc: "Surface evidence from outcome data to inform intraoperative and postoperative decisions.",
-                },
-              ].map((app) => (
-                <div
-                  key={app.title}
-                  className="group rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition duration-300 hover:border-cyan-500/20 hover:bg-white/[0.04]"
-                >
-                  <h3 className="text-lg font-semibold text-white">
-                    {app.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-400">
-                    {app.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <ApplicationsGrid />
           </div>
         </section>
 
@@ -1124,6 +1111,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <ScopeDisclaimerSection />
 
         {/* 8. ABOUT */}
         <section
@@ -1190,7 +1179,9 @@ export default function Home() {
                   View GitHub
                 </a>
                 <a
-                  href="#about"
+                  href={WHITE_PAPER_PDF_PATH}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-medium text-slate-200 transition duration-200 hover:border-white/20 hover:bg-white/10"
                 >
                   Read White Paper
