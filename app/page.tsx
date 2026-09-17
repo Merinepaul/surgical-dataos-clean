@@ -1132,11 +1132,20 @@ export default function Home() {
                 .&rdquo;
               </blockquote>
               <p className="mt-10 text-lg leading-relaxed text-slate-400">
-                SurgicalDataOS is founded on a simple conviction: the next
-                generation of surgical AI will not emerge from larger models
-                trained on more pixels. It will emerge from representations of
-                operative expertise that preserve observation, reasoning,
-                decision-making and action in a machine-understandable form.
+                SurgicalDataOS was initiated by Dr. Merine Paul, a practicing
+                ophthalmologist and cataract surgeon from India, with a clinical
+                interest in how surgical expertise, decision-making, and operative
+                experience can be represented in forms that support computational
+                intelligence.
+                <br />
+                <br />
+                The initiative explores how surgical knowledge can be structured
+                for applications in surgical AI, education, simulation, research,
+                and future robotic systems.
+                <br />
+                <br />
+                SurgicalDataOS is currently an independent research initiative
+                and working demonstrator.
               </p>
             </div>
           </div>
